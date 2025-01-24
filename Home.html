@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Website</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth; 
+}
+
+body {
+    background: url('background 5.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+    overflow-x: hidden;
+}
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 80px; 
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: transparent; 
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 5%;
+    z-index: 1000;
+    transition: background 0.3s ease;
+}
+
+nav.scrolled {
+    background: rgba(0, 0, 0, 0.5); 
+}
+
+nav img {
+    height: 50px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #000; 
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ffb74d; 
+}
+
+.nav-social-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-social-links a {
+    margin-left: 15px;
+}
+
+.detel {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.detel h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+span {
+    color: #ffb74d;
+}
+
+.detel p {
+    line-height: 1.6;
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+}
+
+.detel a {
+    background: #0ba29d;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #fff;
+    display: inline-block;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.detel a:hover {
+    background: #ffb74d;
+}
+
+.section {
+    padding: 60px 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.7); 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.about-section,
+.history-section,
+.experience-section,
+.contact-form {
+    background: rgba(255, 255, 255, 0.2); 
+}
+
+.about-section h1,
+.history-section h1,
+.experience-section h1 {
+    font-size: 3rem;
+    color: #212121;
+    margin-bottom: 20px;
+}
+
+.about-section h2 {
+    font-size: 2rem;
+    color: #212121;
+    margin-bottom: 20px;
+}
+
+.about-section p,
+.history-section p,
+.experience-section p {
+    color: #555;
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 0; 
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery div {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery div:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.gallery img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.gallery p {
+    color: #212121;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.gallery p span {
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+.contact-form {
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.contact-form h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    padding: 15px 20px;
+    background: #0ba29d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+    background: #ffb74d;
+}
+
+footer {
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+footer p {
+    margin-bottom: 10px;
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-links a {
+    color: #fff;
+    font-size: 24px;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    color: #ffb74d;
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        top: 0;
+        padding: 10px;
+    }
+
+    .detel, .contact-form {
+        margin-top: 10%;
+    }
+
+    .gallery div {
+        min-width: 100%;
+        max-width: 100%;
+    }
+}
+
+body.dark-mode {
+    background: #121212;
+    color: #e0e0e0;
+}
+body.dark-mode nav {
+    background: transparent; 
+}
+body.dark-mode nav ul li a {
+    color: #fff; 
+}
+body.dark-mode nav ul li a:hover {
+    color: #ffb74d; 
+}
+body.dark-mode .section {
+    background: rgba(34, 34, 34, 0.9); 
+}
+body.dark-mode .detel {
+    color: #e0e0e0; 
+}
+body.dark-mode .detel a {
+    background: #03dac6;
+    color: #ffffff; 
+}
+body.dark-mode .detel a:hover {
+    background: #03a9f4;
+}
+body.dark-mode footer {
+    background: rgba(34, 34, 34, 0.9); 
+}
+body.dark-mode .social-links a {
+    color: #e0e0e0;
+}
+body.dark-mode .social-links a:hover {
+    color: #ffb74d;
+}
+body.dark-mode .contact-form {
+    background: rgba(34, 34, 34, 0.8); 
+    color: #e0e0e0; 
+}
+body.dark-mode .contact-form h2 {
+    color: #ffffff; 
+}
+body.dark-mode .contact-form input,
+body.dark-mode .contact-form textarea {
+    border: 1px solid #555; 
+    background: #1e1e1e; 
+    color: #e0e0e0; 
+}
+body.dark-mode .contact-form button {
+    background: #03dac6;
+    color: #ffffff;
+}
+body.dark-mode .contact-form button:hover {
+    background: #03a9f4;
+}
+body.dark-mode .section h1,
+body.dark-mode .section h2 {
+    color: #ffffff; 
+}
+body.dark-mode .section p {
+    color: #e0e0e0; 
+}
+body.dark-mode .gallery p {
+    color: #ffffff; 
+}
+body.dark-mode .gallery img {
+    filter: brightness(70%);
+}
+    </style>
+</head>
+<body>
+    <div id="home" class="hero">
+        <nav>
+            <img src="C:/Users/USER/Downloads/WhatsApp_Image_2024-07-11_at_18.09.04_13f8b3ae-removebg-preview.png" class="logo" width="60px" height="auto">
+            <ul>
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#about">ABOUT ME</a></li>
+                <li><a href="#history">HISTORY</a></li>
+                <li><a href="#experience">EXPERIENCE</a></li>
+                <li><a href="#contact">CONTACT ME</a></li>
+                <button id="dark-mode-toggle">Dark Mode</button>
+            </ul>
+        </nav>
+        <div class="detel">
+            <h1>I'm Hirwa <span>Yvan</span></h1>
+            <p>This is my official portfolio website
+                <br> Details and work experience
+            </p>
+            <a href="CURRICULUM VITAE FOR HIRWA YVAN.pdf" download="CURRICULUM VITAE FOR HIRWA YVAN.pdf">DOWNLOAD CV</a>    
+        </div>
+    </div>
+    <div id="about" class="section about-section">
+        <h1>About Me</h1>
+        <h2>Hirwa Yvan</h2>
+        <p>I am a passionate web developer with a strong foundation in programming and web design. I enjoy creating websites that are not only functional but also visually appealing.</p>
+    </div>
+    <div id="history" class="section history-section">
+        <h1>History</h1>
+        <p>Welcome to the History page. Here you will find information about my background, education, and personal achievements.</p>
+        <div class="gallery">
+            <div>
+                <a href="https://rivierahighschool.org/" target="_blank">
+                    <img src="graduation.jpg" alt="Graduation">
+                </a>
+                <p>Graduation<br><span>I'm a 2022 high school class graduant.</span></p>
+            </div>
+            <div>        
+                <a href="https://www.elearning-africa.com/conference2025/" target="_blank">
+                    <img src="elearning.png" alt="E-learning">
+                </a>
+                <p>E-learning<br><span>I got an opportunity to be a part of the IT support of the eLearning Africa 2024 conference that took place at Kigali Convention Center.</span></p>
+            </div>
+            <div>
+                <a href="https://auca.ac.rw/" target="_blank">
+                    <img src="AUCA.jpg" alt="AUCA">
+                </a>
+                <p>AUCA Campus<br><span>I'm currently enrolled at the best university that provides industry-ready IT skills.</span></p>
+            </div>
+        </div>
+    </div>
+    <div id="experience" class="section experience-section">
+        <h1>Working Experience</h1>
+        <p>Here you will find information about my working experience in the IT industry.</p>
+        <div class="gallery">
+            <div class="image-container">
+                <img src="elearning2.png" alt="e-learning">
+                <div class="caption">
+                    <p><span>Position:</span> IT Support</p>
+                    <p><span>Company:</span> Events Media Services Ltd</p>
+                    <p><span>Duration:</span> 29 May 2024 - 31 May 2024</p>
+                    <p><span>Description:</span> Provided technical support for the eLearning Africa 2024 conference held at Kigali Convention Center.</p>
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="kayvan.jpg" alt="kayvan-ltd">
+                <div class="caption">
+                    <p><span>Position:</span> IT Support</p>
+                    <p><span>Company:</span> KAYVAN Ltd</p>
+                    <p><span>Duration:</span> August 2022 - December 2023</p>
+                    <p><span>Description:</span> Provided technical support and maintenance for computer systems and networks. Also managed the inventory data of the business.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="contact" class="contact-form">
+        <h2>Contact Me</h2>
+        <form action="/submit-form" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send</button>
+        </form>        
+    </div>
+    <footer>
+        <p>&copy; 2024 Hirwa Yvan. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://wa.me/250784111009" target="_blank" title="WhatsApp">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="30">
+            </a>            
+            <a href="https://www.linkedin.com/in/hirwa-yvan-368076263/" target="_blank" title="LinkedIn">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/linkedin.svg" alt="LinkedIn" width="30">
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+            }
+        });
+        document.getElementById('dark-mode-toggle').addEventListener('click', toggleDarkMode);
+    </script>
+</body>
+</html>
